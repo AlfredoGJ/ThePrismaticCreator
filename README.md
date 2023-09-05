@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+# A Magic The Gathering Card Creator -  Just For Fun :sunglasses: :metal: :fire:  
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
