@@ -1,7 +1,11 @@
 
-export default function Label   () {
+interface LabelProps {
+    text:string
+}
+
+export default function Label   ({text}:LabelProps) {
 
     return <small className="text-small" >
-        hello world
+        {text}
     </small>
 }

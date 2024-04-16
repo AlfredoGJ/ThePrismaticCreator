@@ -1,0 +1,19 @@
+.card-header-emboss {
+  /* border: 1px solid blue; */
+  width: 100%;
+  height: 100%;
+  border-radius: 1.6% / 50%;
+}
+
+.card-header-content {
+  /* border: 1px solid yellow; */
+  border-radius: inherit;
+  height: 100%;
+  vertical-align: middle;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.card-header-green {
+  background: linear-gradient(2deg, rgb(22, 40, 23), green);
+}

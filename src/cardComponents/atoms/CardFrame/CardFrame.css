@@ -1,0 +1,9 @@
+.card-frame {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.card-frame-black {
+    background:linear-gradient(50deg,green, rgb(165, 203, 149), green)
+}

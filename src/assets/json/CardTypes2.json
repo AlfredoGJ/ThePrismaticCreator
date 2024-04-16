@@ -1,0 +1,24 @@
+{
+    "cardTypes": [
+        "artifact",
+        "conspiracy",
+        "creature",
+        "enchantment",
+        "instant",
+        "land",
+        "phenomenon",
+        "plane",
+        "planeswalker",
+        "scheme",
+        "sorcery",
+        "tribal",
+        "vanguard"
+    ],
+    "cardSuperTypes": [
+        "Basic",
+        "Legendary",
+        "Ongoing",
+        "Snow",
+        "World"
+    ]
+}
