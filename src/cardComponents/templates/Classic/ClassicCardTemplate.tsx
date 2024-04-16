@@ -14,7 +14,8 @@ export const ClassicCardTemplate = ({
   imageSource,
   manaCost,
   title,
-  types,
+  superType,
+  type,
   subtypes,
   collection,
   rarity,
@@ -28,7 +29,8 @@ export const ClassicCardTemplate = ({
         <CardTitle manaCost={manaCost}>{title}</CardTitle>
         <CardArt imageSource={imageSource}></CardArt>
         <CardTypes
-          types={types}
+          superType={superType}
+          type={type}
           subTypes={subtypes}
           collection={collection}
           rarity={rarity}

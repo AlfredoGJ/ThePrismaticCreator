@@ -19,7 +19,7 @@ export const Tabs = ({ tabsData }: TabsProps) => {
           {tabsData.map((tabitem, idx) => (
             <Tab.Panel
               key={idx}
-              className="bg-zinc-800 p-3 focus:outline-none focus:ring-2"
+              className="bg-zinc-800 p-3 "
             >
               {tabitem.panelUI}
             </Tab.Panel>

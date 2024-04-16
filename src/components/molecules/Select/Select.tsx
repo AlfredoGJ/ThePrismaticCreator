@@ -3,31 +3,32 @@ import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Option } from "../../../ts/types";
 
-const people = [
-  { name: "Wade Cooper" },
-  { name: "Arlene Mccoy" },
-  { name: "Devon Webb" },
-  { name: "Tom Cook" },
-  { name: "Tanya Fox" },
-  { name: "Hellen Schmidt" },
-];
-
 interface ListBoxProps {
   options: Option[];
   name: string;
-  value?: Option
+  value?: Option | Option[];
+  multiple?: boolean;
+  onChange?: ((value: Option[]) => void) | ((value: Option) => void);
 }
 
-export const Select = ({ options, name, value }: ListBoxProps) => {
+export const Select = ({
+  options,
+  name,
+  value,
+  onChange,
+  multiple,
+}: ListBoxProps) => {
   const [selected, setSelected] = useState(options[0]);
 
   return (
     <div className="top-16 w-auto">
-      <Listbox value={selected} onChange={setSelected} name={name}>
+      <Listbox value={value} onChange={onChange} name={name} by="name">
         <div className="relative mt-1">
           <Listbox.Button className="relative w-full cursor-default rounded-full bg-zinc-900 py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
             <span className="block truncate">
-              {selected.render ? selected.render : selected.name}
+              {Array.isArray(value)
+                ? value.map((v) => v.name).join(", ")
+                : value?.name}
             </span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <ChevronDownIcon
@@ -43,9 +44,9 @@ export const Select = ({ options, name, value }: ListBoxProps) => {
             leaveTo="opacity-0"
           >
             <Listbox.Options className="z-10 absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-stone-800 py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
-              {options.map((option, personIdx) => (
+              {options.map((option) => (
                 <Listbox.Option
-                  key={personIdx}
+                  key={option.id}
                   className=" cursor-default select-none py-1 px-1"
                   value={option}
                 >

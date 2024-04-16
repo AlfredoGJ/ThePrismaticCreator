@@ -97,8 +97,9 @@ type CardData = {
   disclaimer: string;
   text: string;
   flavor?: string;
-  types: string[];
-  subtypes: string[];
+  superType: CardSuperType;
+  type: CardType;
+  subtypes: string;
   collection: string;
   rarity: CardRarity;
   colorIdentity: Colors[];

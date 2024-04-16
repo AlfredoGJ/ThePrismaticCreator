@@ -1,18 +1,18 @@
 {
     "cardTypes": [
-        "artifact",
-        "conspiracy",
-        "creature",
-        "enchantment",
-        "instant",
-        "land",
-        "phenomenon",
-        "plane",
-        "planeswalker",
-        "scheme",
-        "sorcery",
-        "tribal",
-        "vanguard"
+        "Artifact",
+        "Conspiracy",
+        "Creature",
+        "Enchantment",
+        "Instant",
+        "Land",
+        "Phenomenon",
+        "Plane",
+        "Planeswalker",
+        "Scheme",
+        "Sorcery",
+        "Tribal",
+        "Vanguard"
     ],
     "cardSuperTypes": [
         "Basic",

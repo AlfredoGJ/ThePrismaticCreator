@@ -64,44 +64,44 @@ interface ITypesProps {
   cardSuperTypes: CardSuperType[];
 }
 
-export const Types = ({ cardSuperTypes, cardTypes }: ITypesProps) => {
-  const [type, setType] = useState("");
-  const [syperType, setSuperType] = useState("");
-  const [subTypes, setSubTypes] = useState("");
+// export const Types = ({ cardSuperTypes, cardTypes }: ITypesProps) => {
+//   const [type, setType] = useState("");
+//   const [syperType, setSuperType] = useState("");
+//   const [subTypes, setSubTypes] = useState("");
 
-  return (
-    <>
-      <div className="flex flex-row space-x-1">
-        <div className="basis-1/2">
-          <Field label="Supertype">
-            <Select
-              name="Supertype"
-              options={cardSuperTypes.map((superType) => ({
-                name: superType,
-                id: superType,
-              }))}
-            />
-          </Field>
-        </div>
-        <div className="basis-1/2">
-          <Field label="Type">
-            <Select
-              name="Type"
-              options={cardTypes.map((type) => ({ name: type, id: type }))}
-            />{" "}
-          </Field>
-        </div>
-      </div>
-      <div className="flex flex-row">
-        <div className="basis-full">
-          <Field label="Subtype">
-            <Textbox placeholder="Subtype" />
-          </Field>
-        </div>
-      </div>
-    </>
-  );
-};
+//   return (
+//     <>
+//       <div className="flex flex-row space-x-1">
+//         <div className="basis-1/2">
+//           <Field label="Supertype">
+//             <Select
+//               name="Supertype"
+//               options={cardSuperTypes.map((superType) => ({
+//                 name: superType,
+//                 id: superType,
+//               }))}
+//             />
+//           </Field>
+//         </div>
+//         <div className="basis-1/2">
+//           <Field label="Type">
+//             <Select
+//               name="Type"
+//               options={cardTypes.map((type) => ({ name: type, id: type }))}
+//             />{" "}
+//           </Field>
+//         </div>
+//       </div>
+//       <div className="flex flex-row">
+//         <div className="basis-full">
+//           <Field label="Subtype">
+//             <Textbox placeholder="Subtype" />
+//           </Field>
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
 
 export const ExpansionAndRatiry = ({
   sets,

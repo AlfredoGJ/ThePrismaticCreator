@@ -1,5 +1,4 @@
 import Form, {
-  Types,
   abilitiesAndFlavor,
   artistAndDisclaimer,
   ExpansionAndRatiry,
@@ -10,6 +9,11 @@ import { fileToBase64 } from "./utils/Image";
 import { useSelector, useDispatch } from "react-redux";
 
 import { changeImage, changeName } from "./state/naming/namingSlice";
+import {
+  changeSubtypes,
+  changeSupertype,
+  changeType,
+} from "./state/typing/typingSlice";
 
 import { Naming } from "./components/organisms/Form";
 import CardSizeContextProvider, {
@@ -35,6 +39,7 @@ import { getSetsOptionList } from "./utils/getSetOptionList";
 import React from "react";
 import { RootState } from "./state/store";
 import { title } from "process";
+import { Typing } from "./components/organisms/Form/Typing";
 const card: CardData = {
   imageSource:
     "https://www.artofmtg.com/wp-content/uploads/2020/01/Yorvo-Lord-of-Garenbrig-Throne-of-Eldraine-MtG-Art-1024x758.jpg",
@@ -47,8 +52,9 @@ const card: CardData = {
   manaCost: ["B", "R", "2"],
   rarity: "Mythic",
   colorIdentity: ["B", "R"],
-  types: ["Artifact Creature"],
-  subtypes: ["Zombie"],
+  superType: "Legendary",
+  type: "Artifact",
+  subtypes: "Zombie Berzerker",
   creatureData: {
     power: 3,
     toughness: 4,
@@ -88,6 +94,23 @@ const NamingUI = () => {
   );
 };
 
+const TypingUI = () => {
+  const typing = useSelector((state: RootState) => state.typing);
+  const dispatch = useDispatch();
+  return (
+    <Typing
+      onChangeSubtypes={(subtypes) => dispatch(changeSubtypes(subtypes))}
+      onChangeSupertype={(supertype) => dispatch(changeSupertype(supertype))}
+      onChangeType={(type) => dispatch(changeType(type))}
+      cardSupertype={typing.superType}
+      cardType={typing.type}
+      cardSubtypes={typing.subtypes}
+      cardSupertypeOptions={CardTyping.cardSuperTypes as CardSuperType[]}
+      cardTypeOptions={CardTyping.cardTypes as CardType[]}
+    />
+  );
+};
+
 const tabsData: TabData[] = [
   {
     title: "Naming",
@@ -117,12 +140,7 @@ const tabsData: TabData[] = [
         <div>Types</div>
       </div>
     ),
-    panelUI: (
-      <Types
-        cardTypes={CardTyping.cardTypes as CardType[]}
-        cardSuperTypes={CardTyping.cardSuperTypes as CardSuperType[]}
-      />
-    ),
+    panelUI: <TypingUI />,
   },
   {
     title: "Expansion",
@@ -160,6 +178,7 @@ const tabsData: TabData[] = [
 
 function App() {
   const naming = useSelector((state: RootState) => state.naming);
+  const typing = useSelector((state: RootState) => state.typing);
 
   return (
     <div id="App" className="">
@@ -176,6 +195,9 @@ function App() {
                   ...card,
                   title: naming.name,
                   imageSource: naming.image.data,
+                  type: typing.type,
+                  superType: typing.superType,
+                  subtypes: typing.subtypes,
                 }}
               />
             </CardSizeContextProvider>
