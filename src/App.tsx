@@ -1,7 +1,6 @@
 import Form, {
   abilitiesAndFlavor,
   artistAndDisclaimer,
-  ExpansionAndRatiry,
   manaCost,
 } from "./components/organisms/Form/Form";
 
@@ -15,12 +14,23 @@ import {
   changeType,
 } from "./state/typing/typingSlice";
 
+import {
+  changeExpansion,
+  changeRarity,
+} from "./state/expansionAndRarity/expancionAndRaritySlice";
+
 import { Naming } from "./components/organisms/Form";
 import CardSizeContextProvider, {
   initialCardSizeContext,
 } from "./utils/cardSizeContext";
 import { ClassicCardTemplate } from "./cardComponents/templates/Classic/ClassicCardTemplate";
-import { CardData, CardSuperType, CardType, TabData } from "./ts/types";
+import {
+  CardData,
+  CardSuperType,
+  CardType,
+  TabData,
+  CardRarity,
+} from "./ts/types";
 import { Tabs } from "./components/molecules/Tabs/Tabs";
 import {
   ShieldCheckIcon,
@@ -34,12 +44,13 @@ import Button from "./components/atoms/Button/Button";
 import { Buffer } from "buffer";
 import Sets from "./assets/json/Sets.json";
 import CardTyping from "./assets/json/CardTypes2.json";
-
 import { getSetsOptionList } from "./utils/getSetOptionList";
 import React from "react";
 import { RootState } from "./state/store";
 import { title } from "process";
 import { Typing } from "./components/organisms/Form/Typing";
+import { ExpansionAndRarity } from "./components/organisms/Form/ExpansionAndRarity";
+
 const card: CardData = {
   imageSource:
     "https://www.artofmtg.com/wp-content/uploads/2020/01/Yorvo-Lord-of-Garenbrig-Throne-of-Eldraine-MtG-Art-1024x758.jpg",
@@ -62,11 +73,10 @@ const card: CardData = {
 };
 
 const rarities = [
-  {
-    id: "common",
-    name: "Common",
-    render: <div>Common</div>,
-  },
+  { id: "Common", name: "Common" },
+  { id: "Uncommon", name: "Uncommon" },
+  { id: "Rare", name: "Rare" },
+  { id: "Mythic", name: "Mythic" },
 ];
 
 const NamingUI = () => {
@@ -111,6 +121,24 @@ const TypingUI = () => {
   );
 };
 
+const ExpansionAndRarityUI = () => {
+  const sets = getSetsOptionList();
+  const expansionAndRarity = useSelector(
+    (state: RootState) => state.expansionAndRarity
+  );
+  const dispatch = useDispatch();
+  return (
+    <ExpansionAndRarity
+      onChangeRarity={(rarity) => dispatch(changeRarity(rarity))}
+      onChangeExpansion={(expansion) => dispatch(changeExpansion(expansion))}
+      sets={sets}
+      rarities={rarities}
+      expansion={expansionAndRarity.expansion}
+      rarity={expansionAndRarity.rarity}
+    />
+  );
+};
+
 const tabsData: TabData[] = [
   {
     title: "Naming",
@@ -150,9 +178,7 @@ const tabsData: TabData[] = [
         <div>Expansion</div>
       </div>
     ),
-    panelUI: (
-      <ExpansionAndRatiry sets={getSetsOptionList()} rarities={rarities} />
-    ),
+    panelUI: <ExpansionAndRarityUI />,
   },
   {
     title: "Abilities",

@@ -10,17 +10,6 @@ import { CardType, CardSuperType } from "../../../ts/types";
 
 interface FormProps {}
 
-export const Naming = (
-  <>
-    <Field label="Name">
-      <Textbox placeholder="Name of the card" />
-    </Field>
-    <Label text="Image" />
-    <Field label="Upload Image">
-      <FileUpload />
-    </Field>
-  </>
-);
 export const manaCost = (
   <>
     <Label text="Mana Cost" />
@@ -58,73 +47,6 @@ export const manaCost = (
     </div>
   </>
 );
-
-interface ITypesProps {
-  cardTypes: CardType[];
-  cardSuperTypes: CardSuperType[];
-}
-
-// export const Types = ({ cardSuperTypes, cardTypes }: ITypesProps) => {
-//   const [type, setType] = useState("");
-//   const [syperType, setSuperType] = useState("");
-//   const [subTypes, setSubTypes] = useState("");
-
-//   return (
-//     <>
-//       <div className="flex flex-row space-x-1">
-//         <div className="basis-1/2">
-//           <Field label="Supertype">
-//             <Select
-//               name="Supertype"
-//               options={cardSuperTypes.map((superType) => ({
-//                 name: superType,
-//                 id: superType,
-//               }))}
-//             />
-//           </Field>
-//         </div>
-//         <div className="basis-1/2">
-//           <Field label="Type">
-//             <Select
-//               name="Type"
-//               options={cardTypes.map((type) => ({ name: type, id: type }))}
-//             />{" "}
-//           </Field>
-//         </div>
-//       </div>
-//       <div className="flex flex-row">
-//         <div className="basis-full">
-//           <Field label="Subtype">
-//             <Textbox placeholder="Subtype" />
-//           </Field>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-export const ExpansionAndRatiry = ({
-  sets,
-  rarities,
-}: {
-  sets: Option[];
-  rarities: Option[];
-}) => {
-  return (
-    <div className="flex flex-col space-x-1">
-      <div className="basis-1/2">
-        <Field label="Expansion">
-          <Select name="Expansion" options={sets} />{" "}
-        </Field>
-      </div>
-      <div className="basis-1/2">
-        <Field label="Rarity">
-          <Select name="Rarity" options={rarities} />{" "}
-        </Field>
-      </div>
-    </div>
-  );
-};
 
 export const abilitiesAndFlavor = (
   <>

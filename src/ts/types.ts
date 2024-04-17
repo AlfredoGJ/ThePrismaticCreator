@@ -1,7 +1,7 @@
 type Option = {
   id: number | string;
   name: string;
-  render?: React.ReactNode;
+  render?: () => React.ReactNode;
 };
 
 type TabData = {
@@ -15,7 +15,6 @@ type ImageData = {
   name: string;
   type: string;
 };
-
 
 type CardType =
   | "Artifact"
@@ -32,10 +31,7 @@ type CardType =
   | "Tribal"
   | "Vanguard";
 
-
-
 type CardSuperType = "Basic" | "Legendary" | "Ongoing" | "Snow" | "World";
-
 
 type ArtifactSubTypes =
   | "Attraction"
@@ -63,7 +59,7 @@ type EnchantmentSubTypes =
   | "Shard"
   | "Shrine";
 
-type CardRarity = "Mythic" | "Common" | "Uncommon" | "Rare";
+export type CardRarity = "Mythic" | "Common" | "Uncommon" | "Rare";
 type Colors = "B" | "U" | "G" | "R" | "W" | "C";
 type GenericMana = `${number}` | "X" | "Y" | "Z";
 type HybridMana =
@@ -91,7 +87,7 @@ type TextGameSymbols =
   | `${number}`;
 
 type CardData = {
-  imageSource:string,
+  imageSource: string;
   title: string;
   artist: string;
   disclaimer: string;
@@ -119,7 +115,6 @@ export type {
   Option,
   TextGameSymbols,
   CardData,
-  CardRarity,
   CreatureData,
   ManaCostSymbols,
 };

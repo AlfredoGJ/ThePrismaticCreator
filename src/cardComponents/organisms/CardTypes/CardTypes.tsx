@@ -27,7 +27,7 @@ const CardTypes = ({
       <CardText variant="Title">
         {superType && `${superType} `}
         {type}
-        {subTypes.length && "—"}
+        {subTypes.length > 0 && " — "}
         {subTypes.split(" ").map((subtype) => ` ${subtype} `)}
       </CardText>
       <i

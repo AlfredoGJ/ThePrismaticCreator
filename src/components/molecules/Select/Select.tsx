@@ -9,6 +9,7 @@ interface ListBoxProps {
   value?: Option | Option[];
   multiple?: boolean;
   onChange?: ((value: Option[]) => void) | ((value: Option) => void);
+  compareBy?: string extends keyof Option ? never : keyof Option;
 }
 
 export const Select = ({
@@ -17,12 +18,17 @@ export const Select = ({
   value,
   onChange,
   multiple,
+  compareBy
 }: ListBoxProps) => {
-  const [selected, setSelected] = useState(options[0]);
-
   return (
     <div className="top-16 w-auto">
-      <Listbox value={value} onChange={onChange} name={name} by="name">
+      <Listbox
+        value={value}
+        onChange={onChange}
+        name={name}
+        by={compareBy}
+        multiple={multiple}
+      >
         <div className="relative mt-1">
           <Listbox.Button className="relative w-full cursor-default rounded-full bg-zinc-900 py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
             <span className="block truncate">
@@ -59,7 +65,7 @@ export const Select = ({
                             : "font-normal"
                         } ${active ? "bg-stone-700" : ""}`}
                       >
-                        {option.render ? option.render : option.name}
+                        {option.render ? option.render() : option.name}
                       </div>
                     </>
                   )}
