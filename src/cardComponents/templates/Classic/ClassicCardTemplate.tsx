@@ -2,7 +2,8 @@ import { CardData } from "../../../ts/types";
 import CardFrame from "../../atoms/CardFrame/CardFrame";
 import { CardHolder } from "../../atoms/CardHolder/CardHolder";
 import { CardText } from "../../atoms/CardText/CardText";
-import {CardArt} from "../../molecules/CardArt/CardArt";
+import { CardArt } from "../../molecules/CardArt/CardArt";
+import { CardCredits } from "../../molecules/CardCredits/CardCredits";
 import { CardTextBox } from "../../molecules/CardTextBox/CardTextBox";
 import { CardHeader } from "../../molecules/Header/CardHeader";
 import CardTitle from "../../organisms/CardTitle/CardTitle";
@@ -22,6 +23,8 @@ export const ClassicCardTemplate = ({
   text,
   flavor,
   creatureData,
+  artist,
+  disclaimer,
 }: ClassicCardTemplateProps) => {
   return (
     <CardHolder>
@@ -50,6 +53,7 @@ export const ClassicCardTemplate = ({
             <CardText variant="Title">{`${creatureData.power}/${creatureData.toughness} `}</CardText>
           </CardHeader>
         )}
+        <CardCredits artist={artist} disclaimer={disclaimer} />
       </CardFrame>
     </CardHolder>
   );

@@ -15,7 +15,7 @@ export const CardTextBox = ({ children, flavor }: CardTextBoxProps) => {
   const { textContainerPaddingPercent, thinBorderPercent } = constants.card;
 
   return (
-    <AbsoluteContainer bottom={0.06} height={0.39} left={0.045} right={0.045}>
+    <AbsoluteContainer bottom={0.08} height={0.37} left={0.045} right={0.045}>
       <ContentBorder>
         <div
           className="card-textbox-content"

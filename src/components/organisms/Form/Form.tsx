@@ -50,21 +50,7 @@ export const manaCost = (
 
 
 
-export const artistAndDisclaimer = (
-  <>
-    {" "}
-    <div className="">
-      <Field label="Artist">
-        <Textbox placeholder="Artist" />
-      </Field>
-    </div>
-    <div className="">
-      <Field label="Disclaimer">
-        <Textbox placeholder="Add some disclaimer e.g: '™ & © 2024 Wizards...  " />
-      </Field>
-    </div>
-  </>
-);
+
 
 export const powerThoughness = (
   <>

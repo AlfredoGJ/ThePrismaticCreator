@@ -7,7 +7,8 @@ interface CardFramePorps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export default function ({ children }: CardFramePorps) {
   const { cardSize } = useContext(CardSizeContext);
-  const { frameTopBorderRadiusPercent: frameTopBorderRadiusPcnt } = constants.card;
+  const { frameTopBorderRadiusPercent: frameTopBorderRadiusPcnt } =
+    constants.card;
   return (
     <div
       className="card-frame card-frame-black"

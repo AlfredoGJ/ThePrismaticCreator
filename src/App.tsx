@@ -1,7 +1,4 @@
-import Form, {
-  artistAndDisclaimer,
-  manaCost,
-} from "./components/organisms/Form/Form";
+import Form, { manaCost } from "./components/organisms/Form/Form";
 
 import { fileToBase64 } from "./utils/Image";
 import { useSelector, useDispatch } from "react-redux";
@@ -54,6 +51,11 @@ import {
   changeCardFlavor,
   changeCardText,
 } from "./state/AbilitiesAndFlavor/abilitiesAndFlavor";
+import { ArtistAndDisclaimer } from "./components/organisms/Form/ArtistAndDisclaimer";
+import {
+  changeCardArtist,
+  changeCardDisclaimer,
+} from "./state/artistAndDisclaimer/artistAndDisclaimer";
 
 const card: CardData = {
   imageSource:
@@ -158,6 +160,23 @@ const AbilitiesAndFlavorUI = () => {
   );
 };
 
+const ArtistAndDisclaimerUI = () => {
+  const artistAndDisclaimer = useSelector(
+    (state: RootState) => state.artistAndDisclaimer
+  );
+  const dispatch = useDispatch();
+  return (
+    <ArtistAndDisclaimer
+      artist={artistAndDisclaimer.cardArtist}
+      disclaimer={artistAndDisclaimer.cardDisclaimer}
+      onChangeArtist={(artist) => dispatch(changeCardArtist(artist))}
+      onChangeDisclaimer={(disclaimer) =>
+        dispatch(changeCardDisclaimer(disclaimer))
+      }
+    />
+  );
+};
+
 const tabsData: TabData[] = [
   {
     title: "Naming",
@@ -217,14 +236,20 @@ const tabsData: TabData[] = [
         <div>More</div>
       </div>
     ),
-    panelUI: artistAndDisclaimer,
+    panelUI: <ArtistAndDisclaimerUI />,
   },
 ];
 
 function App() {
   const naming = useSelector((state: RootState) => state.naming);
   const typing = useSelector((state: RootState) => state.typing);
-  const abilitiesAndFlavor = useSelector((state: RootState) => state.abilitiesAndFlavor);
+  const abilitiesAndFlavor = useSelector(
+    (state: RootState) => state.abilitiesAndFlavor
+  );
+
+  const artistAndDisclaimer = useSelector(
+    (state: RootState) => state.artistAndDisclaimer
+  );
 
   return (
     <div id="App" className="">
@@ -244,8 +269,10 @@ function App() {
                   type: typing.type,
                   superType: typing.superType,
                   subtypes: typing.subtypes,
-                  text:abilitiesAndFlavor.cardText,
-                  flavor:abilitiesAndFlavor.cardFlavor,
+                  text: abilitiesAndFlavor.cardText,
+                  flavor: abilitiesAndFlavor.cardFlavor,
+                  disclaimer: artistAndDisclaimer.cardDisclaimer,
+                  artist: artistAndDisclaimer.cardArtist,
                 }}
               />
             </CardSizeContextProvider>

@@ -10,5 +10,6 @@ export const constants = {
     titlePercent: 0.038,
     NormalTextPercent: 0.03,
     collectionSymbolPercent: 0.056,
+    SmallTextPercent: 0.022,
   },
 };

@@ -1,0 +1,12 @@
+.credits-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.credits-artist {
+  display: flex;
+  flex-direction: row;
+}
+
+.credits-disclaimer {
+}
