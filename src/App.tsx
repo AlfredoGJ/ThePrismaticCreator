@@ -1,5 +1,4 @@
 import Form, {
-  abilitiesAndFlavor,
   artistAndDisclaimer,
   manaCost,
 } from "./components/organisms/Form/Form";
@@ -50,6 +49,11 @@ import { RootState } from "./state/store";
 import { title } from "process";
 import { Typing } from "./components/organisms/Form/Typing";
 import { ExpansionAndRarity } from "./components/organisms/Form/ExpansionAndRarity";
+import { AbilitiesAndFlavor } from "./components/organisms/Form/AbilitiesAndFlavor";
+import {
+  changeCardFlavor,
+  changeCardText,
+} from "./state/AbilitiesAndFlavor/abilitiesAndFlavor";
 
 const card: CardData = {
   imageSource:
@@ -139,6 +143,21 @@ const ExpansionAndRarityUI = () => {
   );
 };
 
+const AbilitiesAndFlavorUI = () => {
+  const abilitiesAndFlavor = useSelector(
+    (state: RootState) => state.abilitiesAndFlavor
+  );
+  const dispatch = useDispatch();
+  return (
+    <AbilitiesAndFlavor
+      cardFlavor={abilitiesAndFlavor.cardFlavor}
+      cardText={abilitiesAndFlavor.cardText}
+      onChangeCardFlavor={(flavor) => dispatch(changeCardFlavor(flavor))}
+      onChangeCardText={(text) => dispatch(changeCardText(text))}
+    />
+  );
+};
+
 const tabsData: TabData[] = [
   {
     title: "Naming",
@@ -188,7 +207,7 @@ const tabsData: TabData[] = [
         <div>Abilities</div>
       </div>
     ),
-    panelUI: abilitiesAndFlavor,
+    panelUI: <AbilitiesAndFlavorUI />,
   },
   {
     title: "Artist and Disclamer",
@@ -205,6 +224,7 @@ const tabsData: TabData[] = [
 function App() {
   const naming = useSelector((state: RootState) => state.naming);
   const typing = useSelector((state: RootState) => state.typing);
+  const abilitiesAndFlavor = useSelector((state: RootState) => state.abilitiesAndFlavor);
 
   return (
     <div id="App" className="">
@@ -224,6 +244,8 @@ function App() {
                   type: typing.type,
                   superType: typing.superType,
                   subtypes: typing.subtypes,
+                  text:abilitiesAndFlavor.cardText,
+                  flavor:abilitiesAndFlavor.cardFlavor,
                 }}
               />
             </CardSizeContextProvider>

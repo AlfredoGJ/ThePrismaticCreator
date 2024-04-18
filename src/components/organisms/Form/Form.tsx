@@ -48,21 +48,7 @@ export const manaCost = (
   </>
 );
 
-export const abilitiesAndFlavor = (
-  <>
-    {" "}
-    <div className="">
-      <Field label="Card Text">
-        <Textbox placeholder="Write the card text ant its abilities" />
-      </Field>
-    </div>
-    <div className="">
-      <Field label="Flavor">
-        <Textbox placeholder="Add some flavor" />
-      </Field>
-    </div>{" "}
-  </>
-);
+
 
 export const artistAndDisclaimer = (
   <>
