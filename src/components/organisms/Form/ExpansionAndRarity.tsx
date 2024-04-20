@@ -26,10 +26,17 @@ export const ExpansionAndRarity = ({
       <div className="basis-1/2">
         <Field label="Expansion">
           <Select
+            compareBy="id"
             value={expansion}
             name="Expansion"
             options={sets}
             onChange={onChangeExpansion}
+            renderItem={(option) => (
+              <div className="flex flex-row items-center align-middle space-x-2">
+                <i className={`ss ss-${option.id} ss-fw`}></i>
+                <div>{option.name}</div>
+              </div>
+            )}
           />{" "}
         </Field>
       </div>
@@ -40,6 +47,12 @@ export const ExpansionAndRarity = ({
             name="Rarity"
             options={rarities}
             onChange={onChangeRarity}
+            renderItem={(option) => (
+              <div className="flex flex-row items-center align-middle space-x-2">
+                <i className="ms ms-rarity ms-fw"></i>
+                <div>{` ${option.name}`}</div>
+              </div>
+            )}
           />{" "}
         </Field>
       </div>

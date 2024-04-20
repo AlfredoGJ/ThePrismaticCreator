@@ -10,6 +10,7 @@ interface ListBoxProps {
   multiple?: boolean;
   onChange?: ((value: Option[]) => void) | ((value: Option) => void);
   compareBy?: string extends keyof Option ? never : keyof Option;
+  renderItem?: (option: Option) => JSX.Element;
 }
 
 export const Select = ({
@@ -18,7 +19,8 @@ export const Select = ({
   value,
   onChange,
   multiple,
-  compareBy
+  compareBy,
+  renderItem,
 }: ListBoxProps) => {
   return (
     <div className="top-16 w-auto">
@@ -33,7 +35,11 @@ export const Select = ({
           <Listbox.Button className="relative w-full cursor-default rounded-full bg-zinc-900 py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
             <span className="block truncate">
               {Array.isArray(value)
-                ? value.map((v) => v.name).join(", ")
+                ? value
+                    .map((v) => (renderItem ? renderItem(v) : v.name))
+                    .join(", ")
+                : renderItem
+                ? renderItem(value!)
                 : value?.name}
             </span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -65,7 +71,7 @@ export const Select = ({
                             : "font-normal"
                         } ${active ? "bg-stone-700" : ""}`}
                       >
-                        {option.render ? option.render() : option.name}
+                        {renderItem ? renderItem(option) : option.name}
                       </div>
                     </>
                   )}

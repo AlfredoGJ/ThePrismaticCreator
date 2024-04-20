@@ -1,7 +1,6 @@
 type Option = {
   id: number | string;
   name: string;
-  render?: () => React.ReactNode;
 };
 
 type TabData = {

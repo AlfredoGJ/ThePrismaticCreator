@@ -8,11 +8,5 @@ export const getSetsOptionList = (): Option[] => {
     .map((set) => ({
       id: set.code,
       name: set.name,
-      render: () => (
-        <div className="flex flex-row items-center align-middle">
-          <i className={`ss ss-${set.code} ss-fw`}></i>
-          <div>{set.name}</div>
-        </div>
-      ),
     }));
 };
