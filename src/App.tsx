@@ -1,4 +1,4 @@
-import Form, { manaCost } from "./components/organisms/Form/Form";
+import Form from "./components/organisms/Form/Form";
 
 import { fileToBase64 } from "./utils/Image";
 import { useSelector, useDispatch } from "react-redux";
@@ -14,6 +14,8 @@ import {
   changeExpansion,
   changeRarity,
 } from "./state/expansionAndRarity/expancionAndRaritySlice";
+
+import { changeManaCost } from "./state/manaCost/manaCostSlice";
 
 import { Naming } from "./components/organisms/Form";
 import CardSizeContextProvider, {
@@ -56,6 +58,7 @@ import {
   changeCardArtist,
   changeCardDisclaimer,
 } from "./state/artistAndDisclaimer/artistAndDisclaimer";
+import ManaCost from "./components/organisms/Form/ManaCost";
 
 const card: CardData = {
   imageSource:
@@ -145,6 +148,17 @@ const ExpansionAndRarityUI = () => {
   );
 };
 
+const ManaCostUI = () => {
+  const manaCost = useSelector((state: RootState) => state.manaCost);
+  const dispatch = useDispatch();
+  return (
+    <ManaCost
+      cardManaCost={manaCost.manaCost}
+      onChangeManaCost={(manaCost) => dispatch(changeManaCost(manaCost))}
+    />
+  );
+};
+
 const AbilitiesAndFlavorUI = () => {
   const abilitiesAndFlavor = useSelector(
     (state: RootState) => state.abilitiesAndFlavor
@@ -196,7 +210,7 @@ const tabsData: TabData[] = [
         <div>Color</div>
       </div>
     ),
-    panelUI: manaCost,
+    panelUI: <ManaCostUI />,
   },
   {
     title: "Types",

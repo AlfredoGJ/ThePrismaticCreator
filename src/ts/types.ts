@@ -15,6 +15,15 @@ type ImageData = {
   type: string;
 };
 
+interface ICostQuantity {
+  white: number;
+  blue: number;
+  black: number;
+  red: number;
+  green: number;
+  colorless: number;
+}
+
 type CardType =
   | "Artifact"
   | "Conspiracy"
@@ -116,4 +125,5 @@ export type {
   CardData,
   CreatureData,
   ManaCostSymbols,
+  ICostQuantity
 };

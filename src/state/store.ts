@@ -4,6 +4,7 @@ import typingReducer from "./typing/typingSlice";
 import expansionAndRarityReducer from "./expansionAndRarity/expancionAndRaritySlice";
 import abilitiesAndFlavorReducer from "./AbilitiesAndFlavor/abilitiesAndFlavor";
 import artistAndDisclaimerReducer from "./artistAndDisclaimer/artistAndDisclaimer";
+import manaCostSlice from "./manaCost/manaCostSlice";
 const store = configureStore({
   reducer: {
     naming: namingReducer,
@@ -11,6 +12,7 @@ const store = configureStore({
     expansionAndRarity: expansionAndRarityReducer,
     abilitiesAndFlavor: abilitiesAndFlavorReducer,
     artistAndDisclaimer: artistAndDisclaimerReducer,
+    manaCost: manaCostSlice,
   },
 });
 export default store;

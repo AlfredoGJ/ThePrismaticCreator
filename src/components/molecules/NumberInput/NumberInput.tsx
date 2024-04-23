@@ -1,28 +1,32 @@
-import Icon from "../../atoms/Icon/Icon";
 import Textbox from "../../atoms/Textbox/Textbox";
 import { ReactComponent as Chevron } from "../../../assets/svg/chevron.svg";
 import Button from "../../atoms/Button/Button";
-import { useState } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 
-interface NumberInputProps extends React.InputHTMLAttributes<String> {}
+interface NumberInputProps extends React.InputHTMLAttributes<String> {
+  onIncrement?: () => void;
+  onDecrement?: () => void;
+  value?: number;
+}
 
-export default function NumberInput({}: NumberInputProps) {
-  const [value, setValue] = useState(0);
-
-  function handleIncrement() {
-    setValue(value + 1);
+export default function NumberInput({
+  onIncrement,
+  onDecrement,
+  value,
+}: NumberInputProps) {
+  function handleDecrement() {
+    if (onDecrement) onDecrement();
   }
 
-  function handleDecrement() {
-    if (value) setValue(value - 1);
+  function handleIncrement() {
+    if (onIncrement) onIncrement();
   }
 
   return (
     <div className="flex flex-row border border-black rounded-full bg-zinc-900">
       <div className="flex flex-row justify-center">
         <Button size="sm" shape="leftHalf" onClick={handleDecrement}>
-          <ChevronLeftIcon width={24}/>
+          <ChevronLeftIcon width={24} />
         </Button>
       </div>
       <div className="grid">
@@ -30,7 +34,7 @@ export default function NumberInput({}: NumberInputProps) {
       </div>
       <div className="flex flex-row justify-center">
         <Button size="sm" shape="rightHalf" onClick={handleIncrement}>
-        <ChevronRightIcon width={24}/>
+          <ChevronRightIcon width={24} />
         </Button>
       </div>
     </div>

@@ -10,48 +10,6 @@ import { CardType, CardSuperType } from "../../../ts/types";
 
 interface FormProps {}
 
-export const manaCost = (
-  <>
-    <Label text="Mana Cost" />
-    <div className="flex flex-row flex-wrap">
-      <div className="flex basis-1/3 px-2">
-        <Field label="Red">
-          <NumberInput />
-        </Field>
-      </div>
-      <div className="flex basis-1/3 px-2">
-        <Field label="Green">
-          <NumberInput />
-        </Field>
-      </div>
-      <div className="flex basis-1/3 px-2">
-        <Field label="Black">
-          <NumberInput />
-        </Field>
-      </div>
-      <div className="flex basis-1/3 px-2">
-        <Field label="Blue">
-          <NumberInput />
-        </Field>
-      </div>
-      <div className="flex basis-1/3 px-2">
-        <Field label="White">
-          <NumberInput />
-        </Field>
-      </div>
-      <div className="flex basis-1/3 px-2">
-        <Field label="Colorless">
-          <NumberInput />
-        </Field>
-      </div>
-    </div>
-  </>
-);
-
-
-
-
-
 export const powerThoughness = (
   <>
     <Label text="Power / Thoughness" />
@@ -78,7 +36,6 @@ export default function Form({}: FormProps) {
           <Textbox placeholder="Name of the card" />
         </Field>
       </div>
-      <div className="flex-flex-column p-2 ml-2 mb-1">{manaCost}</div>
 
       <div className="flex-flex-column p-2 ml-2 mb-1">{powerThoughness}</div>
     </form>
