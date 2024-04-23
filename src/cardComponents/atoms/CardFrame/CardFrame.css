@@ -1,9 +1,44 @@
 .card-frame {
-    width: 100%;
-    height: 100%;
-    position: relative;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
+.canvas {
+  width: 100%;
+  height: 100%;
+  /* position: relative; */
+}
+
+.card-frame-land {
+  background-image: url('../../../assets/textures/land_upscayl_2x_ultramix_balanced.png');
+  background-size: cover;
+}
+.card-frame-green {
+  background-image: url('../../../assets/textures/green_upscayl_4x_ultramix_balanced.png');
+  background-size: cover;
+}
+.card-frame-red {
+  background-image: url('../../../assets/textures/red-hires.png');
+  background-size: cover;
+}
+.card-frame-blue {
+  background-image: url('../../../assets/textures/blue-hires.jpeg');
+  background-size: cover;
+}
 .card-frame-black {
-    background:linear-gradient(50deg,green, rgb(165, 203, 149), green)
+  background-image: url('../../../assets/textures/black-hires.png');
+  background-size: cover;
+}
+.card-frame-white {
+  background-image: url('../../../assets/textures/white.jpg');
+  background-size: cover;
+}
+.card-frame-artifact {
+  background-image: url('../../../assets/textures/artifact_upscayl_2x_ultramix_balanced.png');
+  background-size: cover;
+}
+.card-frame-colorless {
+  background-image: url('../../../assets/textures/colorless_upscayl_3x_ultramix_balanced.png');
+  background-size: cover;
 }

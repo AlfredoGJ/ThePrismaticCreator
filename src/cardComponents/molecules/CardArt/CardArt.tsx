@@ -17,8 +17,8 @@ export const CardArt = ({ children, imageSource }: CardFramePorps) => {
   return (
     <AbsoluteContainer
       top={0.1365}
-      left={0.045}
-      right={0.045}
+      left={0.032}
+      right={0.032}
       bottom={0.4}
       height={0.56}
     >

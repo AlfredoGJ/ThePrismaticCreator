@@ -1,5 +1,5 @@
 import { CardData } from "../../../ts/types";
-import CardFrame from "../../atoms/CardFrame/CardFrame";
+import { CardFrame } from "../../atoms/CardFrame/CardFrame";
 import { CardHolder } from "../../atoms/CardHolder/CardHolder";
 import { CardText } from "../../atoms/CardText/CardText";
 import { CardArt } from "../../molecules/CardArt/CardArt";
@@ -26,9 +26,17 @@ export const ClassicCardTemplate = ({
   artist,
   disclaimer,
 }: ClassicCardTemplateProps) => {
+  let frameType = "";
+
+  if (type === "Land" || type === "Artifact") {
+    frameType = type.toLowerCase();
+  } else {
+    // Here we determine the frameType based on the card's color identity
+  }
+
   return (
     <CardHolder>
-      <CardFrame>
+      <CardFrame frameType={frameType}>
         <CardTitle manaCost={manaCost}>{title}</CardTitle>
         <CardArt imageSource={imageSource}></CardArt>
         <CardTypes

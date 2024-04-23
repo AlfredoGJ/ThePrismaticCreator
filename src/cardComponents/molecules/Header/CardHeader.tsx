@@ -21,8 +21,8 @@ interface CardHeaderPorps extends React.HTMLAttributes<HTMLDivElement> {
 export const CardHeader = ({
   children,
   top = 0.03,
-  left = 0.03,
-  right = 0.03,
+  left = 0.018,
+  right = 0.018,
   bottom = 0.03,
   height = 0.109,
   hasColorBorder,
