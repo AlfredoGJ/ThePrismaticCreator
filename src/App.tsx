@@ -71,7 +71,7 @@ const card: CardData = {
   disclaimer: "The prismatic Bridge 2024",
   manaCost: ["B", "R", "2"],
   rarity: "Mythic",
-  colorIdentity: ["B", "R"],
+  colorIdentity: [],
   superType: "Legendary",
   type: "Artifact",
   subtypes: "Zombie Berzerker",
@@ -264,6 +264,7 @@ function App() {
   const artistAndDisclaimer = useSelector(
     (state: RootState) => state.artistAndDisclaimer
   );
+  const manaCost = useSelector((state: RootState) => state.manaCost);
 
   return (
     <div id="App" className="">
@@ -287,6 +288,7 @@ function App() {
                   flavor: abilitiesAndFlavor.cardFlavor,
                   disclaimer: artistAndDisclaimer.cardDisclaimer,
                   artist: artistAndDisclaimer.cardArtist,
+                  manaCost: manaCost.manaCost,
                 }}
               />
             </CardSizeContextProvider>

@@ -24,6 +24,55 @@ interface ICostQuantity {
   colorless: number;
 }
 
+export enum NoColorIdentityEnum {
+  Colorless = "Colorless",
+}
+
+export enum MonoColorIdentityEnum {
+  Green = "Green",
+  Red = "Red",
+  White = "White",
+  Black = "Black",
+  Blue = "Blue",
+}
+
+export enum TwoColorIdentityEnum {
+  Azorius = "Azorius",
+  Boros = "Boros",
+  Dimir = "Dimir",
+  Golgari = "Golgari",
+  Gruul = "Gruul",
+  Izzet = "Izzet",
+  Orzhov = "Orzhov",
+  Rakdos = "Rakdos",
+  Selesnya = "Selesnya",
+  Simic = "Simic",
+  Multicolor = "Multicolor",
+}
+
+export type ColorIdentityType = typeof NoColorIdentityEnum &
+  typeof MonoColorIdentityEnum &
+  typeof TwoColorIdentityEnum;
+
+export type ColorIdentityEnum = ColorIdentityType[
+  | "Azorius"
+  | "Boros"
+  | "Dimir"
+  | "Golgari"
+  | "Gruul"
+  | "Izzet"
+  | "Orzhov"
+  | "Rakdos"
+  | "Selesnya"
+  | "Simic"
+  | "Multicolor"
+  | "Green"
+  | "Red"
+  | "White"
+  | "Black"
+  | "Blue"
+  | "Colorless"];
+
 type CardType =
   | "Artifact"
   | "Conspiracy"
@@ -125,5 +174,5 @@ export type {
   CardData,
   CreatureData,
   ManaCostSymbols,
-  ICostQuantity
+  ICostQuantity,
 };

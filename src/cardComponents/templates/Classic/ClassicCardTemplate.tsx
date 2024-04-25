@@ -1,4 +1,9 @@
-import { CardData } from "../../../ts/types";
+import {
+  CardData,
+  MonoColorIdentityEnum,
+  TwoColorIdentityEnum,
+} from "../../../ts/types";
+import { getColorIdentityFromManaCost } from "../../../utils/manaCostConversions";
 import { CardFrame } from "../../atoms/CardFrame/CardFrame";
 import { CardHolder } from "../../atoms/CardHolder/CardHolder";
 import { CardText } from "../../atoms/CardText/CardText";
@@ -28,11 +33,17 @@ export const ClassicCardTemplate = ({
 }: ClassicCardTemplateProps) => {
   let frameType = "";
 
+  let colorIdentity = getColorIdentityFromManaCost(manaCost);
+
+  console.log("ColorIdentity:", colorIdentity);
   if (type === "Land" || type === "Artifact") {
     frameType = type.toLowerCase();
   } else {
-    // Here we determine the frameType based on the card's color identity
+    if (colorIdentity in TwoColorIdentityEnum) frameType = "Multicolor";
+    else frameType = colorIdentity;
   }
+
+  console.log("FrameTypeHere:", frameType);
 
   return (
     <CardHolder>

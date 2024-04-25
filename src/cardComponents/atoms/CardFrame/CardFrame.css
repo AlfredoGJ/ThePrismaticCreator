@@ -42,3 +42,7 @@
   background-image: url('../../../assets/textures/colorless_upscayl_3x_ultramix_balanced.png');
   background-size: cover;
 }
+.card-frame-multicolor {
+  background-image: url('../../../assets/textures/multicolor.jpeg');
+  background-size: cover;
+}
