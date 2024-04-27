@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { CardSizeContext } from "../../../utils/cardSizeContext";
 import AbsoluteContainer from "../../atoms/AbosulteContainer/AbsoluteContainer";
-import ContentBorder from "../../atoms/ContentBorder/ContentBorder";
+import {ContentBorder} from "../../atoms/ContentBorder/ContentBorder";
 import "./CardCredits.css";
 import { constants } from "../../../constants/constants";
 import { CardText } from "../../atoms/CardText/CardText";

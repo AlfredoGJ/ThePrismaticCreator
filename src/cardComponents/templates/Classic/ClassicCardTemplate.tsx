@@ -48,19 +48,22 @@ export const ClassicCardTemplate = ({
   return (
     <CardHolder>
       <CardFrame frameType={frameType}>
-        <CardTitle manaCost={manaCost}>{title}</CardTitle>
-        <CardArt imageSource={imageSource}></CardArt>
+        <CardTitle manaCost={manaCost} colorIdentity={colorIdentity}>
+          {title}
+        </CardTitle>
+        <CardArt imageSource={imageSource} colorIdentity={colorIdentity}></CardArt>
         <CardTypes
           superType={superType}
           type={type}
           subTypes={subtypes}
           collection={collection}
           rarity={rarity}
+          colorIdentity={colorIdentity}
         />
-        <CardTextBox flavor={flavor}>{text}</CardTextBox>
+        <CardTextBox flavor={flavor} color={colorIdentity.toLowerCase()}>{text}</CardTextBox>
         {creatureData && (
           <CardHeader
-            color="gray"
+            color={colorIdentity.toLowerCase()}
             finish="embed"
             bottom={0.02}
             right={0.03}

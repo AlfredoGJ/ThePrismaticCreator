@@ -7,7 +7,7 @@
 
 .card-header-content {
   /* border: 1px solid yellow; */
-  border-radius: inherit;
+  border-radius: 0.8% / 50%;
   height: 100%;
   vertical-align: middle;
   display: flex;
@@ -16,4 +16,11 @@
 }
 .card-header-green {
   background: linear-gradient(2deg, rgb(22, 40, 23), green);
+}
+.card-header-blue {
+  background-color: rgb(225, 235, 243);
+}
+
+.card-header-colorless {
+  background-color: rgb(200, 200, 200);
 }

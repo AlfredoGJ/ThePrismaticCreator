@@ -3,8 +3,8 @@ import "./CardHeader.css";
 import { CardSizeContext } from "../../../utils/cardSizeContext";
 import { constants } from "../../../constants/constants";
 import AbsoluteContainer from "../../atoms/AbosulteContainer/AbsoluteContainer";
-import ContentBorder from "../../atoms/ContentBorder/ContentBorder";
-import ContentFinish from "../../atoms/ContentFinish/ContentFinish";
+import { ContentBorder } from "../../atoms/ContentBorder/ContentBorder";
+import { ContentFinish } from "../../atoms/ContentFinish/ContentFinish";
 
 interface CardHeaderPorps extends React.HTMLAttributes<HTMLDivElement> {
   top?: number;
@@ -20,9 +20,9 @@ interface CardHeaderPorps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const CardHeader = ({
   children,
-  top = 0.03,
-  left = 0.018,
-  right = 0.018,
+  top = 0.02,
+  left = 0.015,
+  right = 0.015,
   bottom = 0.03,
   height = 0.109,
   hasColorBorder,
@@ -47,19 +47,18 @@ export const CardHeader = ({
       bottom={bottom}
       height={height}
     >
-      <Border xBorderRadius={0.5} yBorderRadius={0.15}>
+      <Border xBorderRadius={0.5} yBorderRadius={0.15} color={color}>
         <ContentFinish
           color={color}
           type={finish}
           xBorderRadius={0.5}
-          yBorderRadius={0.13}
+          yBorderRadius={0.16}
         >
           <div
-            className="card-header-content"
+            className={`card-header-content card-header-${color}`}
             style={{
               padding: cardSize.width * textContainerPaddingPercent,
               justifyContent: textAlign,
-              backgroundColor: color,
             }}
           >
             {children}

@@ -6,6 +6,11 @@
   flex-direction: column;
 }
 
+.card-textbox-blue {
+  background-color: rgb(233, 238, 242);
+
+}
+
 .card-text-separator {
   /* border-style:outset; */
   border: 0;

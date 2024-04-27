@@ -13,13 +13,13 @@ interface ContentFinishProps extends React.HTMLAttributes<HTMLDivElement> {
   color: string;
 }
 
-export default function ({
+export const ContentFinish = ({
   children,
   xBorderRadius,
   yBorderRadius,
   type = "emboss",
   color,
-}: ContentFinishProps) {
+}: ContentFinishProps) => {
   const { cardSize } = useContext(CardSizeContext);
   const { headerBorderPercent, thinBorderPercent } = constants.card;
 
@@ -30,7 +30,7 @@ export default function ({
       borderRadius: `${yBorderRadius! * cardSize.width}px / ${
         xBorderRadius! * cardSize.width
       }px`,
-      background: `linear-gradient(2deg, black, ${color})`,
+      // background: `linear-gradient(2deg, black, ${color})`,
     }),
     ...(type === "embed" && {
       padding: `${cardSize.width * headerBorderPercent}px`,
@@ -38,12 +38,12 @@ export default function ({
       borderRadius: `${yBorderRadius! * cardSize.width}px / ${
         xBorderRadius! * cardSize.width
       }px`,
-      background: `linear-gradient(50deg, ${color}, black)`,
+      // background: `linear-gradient(50deg, ${color}, black)`,
     }),
   };
 
   return (
-    <div className="content-finish-emboss" style={style}>
+    <div className="content-finish-emboss content-finish-blue" style={style}>
       {children}
     </div>
   );

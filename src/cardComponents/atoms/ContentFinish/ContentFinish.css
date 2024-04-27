@@ -9,3 +9,7 @@
   .content-finish-embed {
     background: linear-gradient(45deg, rgb(211, 211, 211), rgb(52, 52, 52));
   }
+
+  .content-finish-blue{
+    background: linear-gradient(2deg, black, rgb(200, 220, 225))
+  }

@@ -1,0 +1,68 @@
+
+:root {
+    --green-border: rgb(34, 129, 61);
+    --blue-border: rgb(44, 107, 166);
+    --red-border: rgb(189, 47, 47);
+    --white-border: rgb(231, 233, 217);
+    --black-border: rgb(64, 64, 64);
+    --colorless-border: rgb(230, 230, 235);
+
+}
+
+
+
+.content-border-blue {
+
+    background: rgb(44, 107, 166);
+}
+.content-border-green {
+
+    background: rgb(34, 129, 61);
+}
+.content-border-red {
+
+    background: rgb(189, 47, 47);
+}
+.content-border-white {
+
+    background: rgb(231, 233, 217);
+}
+.content-border-black {
+
+    background: rgb(64, 64, 64);
+}
+
+.content-border-colorless {
+
+    background: rgb(230, 230, 235);
+}
+.content-border-gruul {
+    background: linear-gradient(90deg, var(--red-border), var(--green-border));
+}
+.content-border-boros {
+    background: linear-gradient(90deg, var(--red-border), var(--white-border));
+}
+.content-border-golgari {
+    background: linear-gradient(90deg, var(--black-border), var(--green-border));
+}
+.content-border-orzhov {
+    background: linear-gradient(90deg, var(--white-border), var(--black-border));
+}
+.content-border-azorius {
+    background: linear-gradient(90deg, var(--white-border), var(--blue-border));
+}
+.content-border-izzet {
+    background: linear-gradient(90deg, var(--blue-border), var(--red-border));
+}
+.content-border-dimir {
+    background: linear-gradient(90deg, var(--blue-border), var(--black-border));
+}
+.content-border-simic {
+    background: linear-gradient(90deg, var(--green-border), var(--blue-border));
+}
+.content-border-rakdos {
+    background: linear-gradient(90deg, var(--black-border), var(--red-border));
+}
+.content-border-selesnya {
+    background: linear-gradient(90deg, var(--green-border), var(--white-border));
+}

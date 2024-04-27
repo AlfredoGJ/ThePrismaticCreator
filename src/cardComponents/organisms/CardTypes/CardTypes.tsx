@@ -4,6 +4,7 @@ import { CardSizeContext } from "../../../utils/cardSizeContext";
 import { constants } from "../../../constants/constants";
 import { CardText } from "../../atoms/CardText/CardText";
 import { CardSuperType, CardType } from "../../../ts/types";
+import { ColorIdentityEnum } from "../../../ts/types";
 
 interface CardTypesProps {
   superType: CardSuperType;
@@ -11,7 +12,10 @@ interface CardTypesProps {
   subTypes: string;
   collection: string;
   rarity: string;
+  colorIdentity:ColorIdentityEnum
+
 }
+
 
 const CardTypes = ({
   superType,
@@ -19,11 +23,12 @@ const CardTypes = ({
   subTypes,
   collection,
   rarity,
+  colorIdentity
 }: CardTypesProps) => {
   const { cardSize } = useContext(CardSizeContext);
   const { card } = constants;
   return (
-    <CardHeader color="green" finish="emboss" hasColorBorder top={0.69}>
+    <CardHeader color={colorIdentity.toLowerCase()} finish="emboss" hasColorBorder top={0.74}>
       <CardText variant="Title">
         {superType && `${superType} `}
         {type}
