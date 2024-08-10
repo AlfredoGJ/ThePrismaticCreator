@@ -25,7 +25,7 @@
 }
 .content-border-white {
 
-    background: rgb(231, 233, 217);
+    background: rgb(200, 201, 195);
 }
 .content-border-black {
 
@@ -34,7 +34,7 @@
 
 .content-border-colorless {
 
-    background: rgb(230, 230, 235);
+    background: rgb(197, 197, 201);
 }
 .content-border-gruul {
     background: linear-gradient(90deg, var(--red-border), var(--green-border));

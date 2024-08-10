@@ -3,11 +3,15 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface IAbilitiesAndFlavorState {
   cardText: string;
   cardFlavor: string;
+  cardPower: number;
+  cardToughness: number;
 }
 
 const initialState: IAbilitiesAndFlavorState = {
   cardText: "",
   cardFlavor: "",
+  cardPower: 0,
+  cardToughness: 0,
 };
 
 export const abilitiesAndFlavorSlice = createSlice({
@@ -20,10 +24,20 @@ export const abilitiesAndFlavorSlice = createSlice({
     changeCardFlavor: (state, action) => {
       state.cardFlavor = action.payload;
     },
+    changeCardToughness: (state, action) => {
+      state.cardToughness = action.payload;
+    },
+    changeCardPower: (state, action) => {
+      state.cardPower = action.payload;
+    },
   },
 });
 
-export const { changeCardText, changeCardFlavor } =
-  abilitiesAndFlavorSlice.actions;
+export const {
+  changeCardText,
+  changeCardFlavor,
+  changeCardPower,
+  changeCardToughness,
+} = abilitiesAndFlavorSlice.actions;
 
 export default abilitiesAndFlavorSlice.reducer;

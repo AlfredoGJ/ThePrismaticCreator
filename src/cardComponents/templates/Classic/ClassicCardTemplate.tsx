@@ -51,7 +51,10 @@ export const ClassicCardTemplate = ({
         <CardTitle manaCost={manaCost} colorIdentity={colorIdentity}>
           {title}
         </CardTitle>
-        <CardArt imageSource={imageSource} colorIdentity={colorIdentity}></CardArt>
+        <CardArt
+          imageSource={imageSource}
+          colorIdentity={colorIdentity}
+        ></CardArt>
         <CardTypes
           superType={superType}
           type={type}
@@ -60,19 +63,23 @@ export const ClassicCardTemplate = ({
           rarity={rarity}
           colorIdentity={colorIdentity}
         />
-        <CardTextBox flavor={flavor} color={colorIdentity.toLowerCase()}>{text}</CardTextBox>
-        {creatureData && (
+        <CardTextBox flavor={flavor} color={colorIdentity.toLowerCase()}>
+          {text}
+        </CardTextBox>
+        {type === "Creature" && (
           <CardHeader
             color={colorIdentity.toLowerCase()}
             finish="embed"
             bottom={0.02}
             right={0.03}
-            top={1.135}
+            top={1.2}
             left={0.7}
-            height={0.09}
+            height={0.085}
             textAlign="center"
           >
-            <CardText variant="Title">{`${creatureData.power}/${creatureData.toughness} `}</CardText>
+            <CardText variant="Title">{`${creatureData!.power}/${
+              creatureData!.toughness
+            } `}</CardText>
           </CardHeader>
         )}
         <CardCredits artist={artist} disclaimer={disclaimer} />

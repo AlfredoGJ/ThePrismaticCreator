@@ -11,6 +11,7 @@ interface ContentFinishProps extends React.HTMLAttributes<HTMLDivElement> {
   yBorderRadius?: number;
   type: "emboss" | "embed";
   color: string;
+  hasShadow?: boolean;
 }
 
 export const ContentFinish = ({
@@ -19,9 +20,14 @@ export const ContentFinish = ({
   yBorderRadius,
   type = "emboss",
   color,
+  hasShadow,
 }: ContentFinishProps) => {
   const { cardSize } = useContext(CardSizeContext);
-  const { headerBorderPercent, thinBorderPercent } = constants.card;
+  const {
+    headerBorderPercent,
+    thinBorderPercent,
+    PowerToughnessBorderPercent,
+  } = constants.card;
 
   const style: CSSProperties = {
     ...(type === "emboss" && {
@@ -30,21 +36,22 @@ export const ContentFinish = ({
       borderRadius: `${yBorderRadius! * cardSize.width}px / ${
         xBorderRadius! * cardSize.width
       }px`,
-      // background: `linear-gradient(2deg, black, ${color})`,
     }),
     ...(type === "embed" && {
-      padding: `${cardSize.width * headerBorderPercent}px`,
-      border: `${cardSize.width * headerBorderPercent}px outset gray`,
+      borderWidth: `${cardSize.width * PowerToughnessBorderPercent}px`,
+      borderStyle: "groove",
       borderRadius: `${yBorderRadius! * cardSize.width}px / ${
         xBorderRadius! * cardSize.width
       }px`,
-      // background: `linear-gradient(50deg, ${color}, black)`,
     }),
   };
 
   return (
-    <div className="content-finish-emboss content-finish-blue" style={style}>
+    <div
+      className={`content-finish-${type} content-finish-${color}`}
+      style={style}
+    >
       {children}
     </div>
   );
-}
+};

@@ -2,20 +2,45 @@ import { useState } from "react";
 import TextArea from "../../atoms/TextArea/TextArea";
 import Textbox from "../../atoms/Textbox/Textbox";
 import Field from "../../molecules/Field/Field";
+import NumberInput from "../../molecules/NumberInput/NumberInput";
 
 interface IAbilitiesAndFlavorProps {
   cardText: string;
   cardFlavor: string;
+  cardPower: number;
+  cardToughness: number;
   onChangeCardText: (text: string) => void;
   onChangeCardFlavor: (flavor: string) => void;
+  onChangeCardToughness: (toughness: number) => void;
+  onChangeCardPower: (toughness: number) => void;
 }
 
 export const AbilitiesAndFlavor = ({
   cardFlavor,
   cardText,
+  cardPower,
+  cardToughness,
   onChangeCardFlavor,
   onChangeCardText,
+  onChangeCardToughness,
+  onChangeCardPower,
 }: IAbilitiesAndFlavorProps) => {
+  function handleCardToughnessChange(direction: string) {
+    if (direction === "UP") {
+      onChangeCardToughness(cardToughness + 1);
+    } else {
+      if (cardToughness > 0) onChangeCardToughness(cardToughness - 1);
+    }
+  }
+
+  function handleCardPowerChange(direction: string) {
+    if (direction === "UP") {
+      onChangeCardPower(cardPower + 1);
+    } else {
+      if (cardPower > 0) onChangeCardPower(cardPower - 1);
+    }
+  }
+
   return (
     <>
       {" "}
@@ -33,7 +58,27 @@ export const AbilitiesAndFlavor = ({
             onChangeText={onChangeCardFlavor}
           />
         </Field>
-      </div>{" "}
+      </div>
+      <div className="flex flex-row justify-between ">
+        <div className="flex">
+          <Field label="Power">
+            <NumberInput
+              value={cardPower}
+              onIncrement={() => handleCardPowerChange("UP")}
+              onDecrement={() => handleCardPowerChange("DOWN")}
+            />
+          </Field>
+        </div>
+        <div className="flex">
+          <Field label="Thouhness">
+            <NumberInput
+              value={cardToughness}
+              onIncrement={() => handleCardToughnessChange("UP")}
+              onDecrement={() => handleCardToughnessChange("DOWN")}
+            />
+          </Field>
+        </div>
+      </div>
     </>
   );
 };

@@ -1,5 +1,4 @@
 .card-textbox-content {
-  background-color: rgb(193, 223, 203);
   height: 100%;
   width: 100%;
   display: flex;
@@ -9,6 +8,57 @@
 .card-textbox-blue {
   background-color: rgb(233, 238, 242);
 
+}
+.card-textbox-red {
+  background-color: rgb(243, 226, 226);
+
+}
+.card-textbox-white {
+  background-color: rgb(235, 236, 222);
+
+}
+.card-textbox-green {
+  background-color: rgb(222, 236, 225);
+
+}
+.card-textbox-black {
+  background-color: rgb(198, 198, 198);
+
+}
+.card-textbox-colorless {
+  background-color: rgb(215, 215, 215);
+
+}
+
+.card-textbox-golgari{
+  background: linear-gradient(90deg, rgb(150, 150, 150), rgb(187, 209, 187));
+}
+.card-textbox-gruul{
+  background: linear-gradient(90deg, rgb(191, 165, 165), rgb(187, 209, 187));
+}
+.card-textbox-boros{
+  background: linear-gradient(90deg, rgb(191, 165, 165), rgb(230, 230, 226));
+}
+.card-textbox-izzet{
+  background: linear-gradient(90deg, rgb(197, 199, 220), rgb(239, 214, 214));
+}
+.card-textbox-azorius{
+  background: linear-gradient(90deg, rgb(221, 221, 212), rgb(200, 210, 228));
+}
+.card-textbox-dimir{
+  background: linear-gradient(90deg, rgb(190, 203, 213), rgb(169, 169, 169));
+}
+.card-textbox-rakdos{
+  background: linear-gradient(90deg, rgb(179, 178, 178), rgb(203, 178, 178));
+}
+.card-textbox-selesnya{
+  background: linear-gradient(90deg, rgb(205, 243, 219), rgb(226, 230, 201));
+}
+.card-textbox-simic{
+  background: linear-gradient(90deg, rgb(205, 243, 219), rgb(201, 220, 230));
+}
+.card-textbox-orzhov{
+  background: linear-gradient(90deg, rgb(215, 217, 206), rgb(175, 176, 176));
 }
 
 .card-text-separator {

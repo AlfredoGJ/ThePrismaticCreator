@@ -52,6 +52,8 @@ import { AbilitiesAndFlavor } from "./components/organisms/Form/AbilitiesAndFlav
 import {
   changeCardFlavor,
   changeCardText,
+  changeCardPower,
+  changeCardToughness,
 } from "./state/AbilitiesAndFlavor/abilitiesAndFlavor";
 import { ArtistAndDisclaimer } from "./components/organisms/Form/ArtistAndDisclaimer";
 import {
@@ -76,7 +78,7 @@ const card: CardData = {
   type: "Artifact",
   subtypes: "Zombie Berzerker",
   creatureData: {
-    power: 3,
+    power: 5,
     toughness: 4,
   },
 };
@@ -168,8 +170,14 @@ const AbilitiesAndFlavorUI = () => {
     <AbilitiesAndFlavor
       cardFlavor={abilitiesAndFlavor.cardFlavor}
       cardText={abilitiesAndFlavor.cardText}
+      cardPower={abilitiesAndFlavor.cardPower}
+      cardToughness={abilitiesAndFlavor.cardToughness}
       onChangeCardFlavor={(flavor) => dispatch(changeCardFlavor(flavor))}
       onChangeCardText={(text) => dispatch(changeCardText(text))}
+      onChangeCardPower={(power) => dispatch(changeCardPower(power))}
+      onChangeCardToughness={(toughness) =>
+        dispatch(changeCardToughness(toughness))
+      }
     />
   );
 };
@@ -265,6 +273,7 @@ function App() {
     (state: RootState) => state.artistAndDisclaimer
   );
   const manaCost = useSelector((state: RootState) => state.manaCost);
+  const expansionAndRarity = useSelector((state:RootState) => state.expansionAndRarity)
 
   return (
     <div id="App" className="">
@@ -289,6 +298,12 @@ function App() {
                   disclaimer: artistAndDisclaimer.cardDisclaimer,
                   artist: artistAndDisclaimer.cardArtist,
                   manaCost: manaCost.manaCost,
+                  collection:expansionAndRarity.expansion.id as string,
+                  rarity: expansionAndRarity.rarity.name as CardRarity,
+                  creatureData: {
+                    power: abilitiesAndFlavor.cardPower,
+                    toughness: abilitiesAndFlavor.cardToughness,
+                  },
                 }}
               />
             </CardSizeContextProvider>

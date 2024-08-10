@@ -15,12 +15,53 @@
   align-items: center;
 }
 .card-header-green {
-  background: linear-gradient(2deg, rgb(22, 40, 23), green);
+  background-color: rgb(201, 220, 200);
 }
 .card-header-blue {
   background-color: rgb(225, 235, 243);
 }
+.card-header-red {
+  background-color: rgb(230, 173, 162);
+}
+.card-header-white {
+  background-color: rgb(212, 207, 178);
+}
+.card-header-black {
+  background-color: rgb(160, 158, 158);
+}
 
+.card-header-golgari{
+  background-color: rgb(196, 190, 103);
+}
+
+.card-header-gruul{
+  background-color: rgb(196, 190, 103);
+}
+
+.card-header-boros{
+  background-color: rgb(196, 190, 103);
+}
+.card-header-izzet{
+  background-color: rgb(196, 190, 103);
+}
+.card-header-azorius{
+  background-color: rgb(196, 190, 103);
+}
+.card-header-dimir{
+  background-color: rgb(196, 190, 103);
+}
+.card-header-rakdos{
+  background-color: rgb(196, 190, 103);
+}
+.card-header-selesnya{
+  background-color: rgb(196, 190, 103);
+}
+.card-header-simic{
+  background-color: rgb(196, 190, 103);
+}
+.card-header-orzhov{
+  background-color: rgb(196, 190, 103);
+}
 .card-header-colorless {
   background-color: rgb(200, 200, 200);
 }

@@ -1,8 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { ImageData } from "../../ts/types";
+
+export interface NamingState {
+  name: string;
+  image: ImageData;
+}
+
+const initialState: NamingState = {
+  name: "",
+  image: { data: "", name: "", type: "" },
+};
 
 export const namingSlice = createSlice({
   name: "naming",
-  initialState: { name: "", image: { data: "", name: "", type: "" } },
+  initialState,
   reducers: {
     changeName: (state, action) => {
       state.name = action.payload;
