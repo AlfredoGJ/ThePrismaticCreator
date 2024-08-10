@@ -1,6 +1,5 @@
 import {
   CardData,
-  MonoColorIdentityEnum,
   TwoColorIdentityEnum,
 } from "../../../ts/types";
 import { getColorIdentityFromManaCost } from "../../../utils/manaCostConversions";
@@ -21,7 +20,7 @@ export const ClassicCardTemplate = ({
   manaCost,
   title,
   superType,
-  type,
+  types,
   subtypes,
   collection,
   rarity,
@@ -36,12 +35,11 @@ export const ClassicCardTemplate = ({
   let colorIdentity = getColorIdentityFromManaCost(manaCost);
 
   console.log("ColorIdentity:", colorIdentity);
-  if (type === "Land" || type === "Artifact") {
-    frameType = type.toLowerCase();
-  } else {
-    if (colorIdentity in TwoColorIdentityEnum) frameType = "Multicolor";
-    else frameType = colorIdentity;
-  }
+
+  if (types.includes("Land")) frameType = "land";
+  else if (types.includes("Artifact")) frameType = "artifact";
+  else if (colorIdentity in TwoColorIdentityEnum) frameType = "Multicolor";
+  else frameType = colorIdentity;
 
   console.log("FrameTypeHere:", frameType);
 
@@ -57,7 +55,7 @@ export const ClassicCardTemplate = ({
         ></CardArt>
         <CardTypes
           superType={superType}
-          type={type}
+          types={types}
           subTypes={subtypes}
           collection={collection}
           rarity={rarity}
@@ -66,7 +64,7 @@ export const ClassicCardTemplate = ({
         <CardTextBox flavor={flavor} color={colorIdentity.toLowerCase()}>
           {text}
         </CardTextBox>
-        {type === "Creature" && (
+        {types.includes("Creature") && (
           <CardHeader
             color={colorIdentity.toLowerCase()}
             finish="embed"

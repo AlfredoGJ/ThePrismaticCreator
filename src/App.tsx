@@ -1,13 +1,9 @@
-import Form from "./components/organisms/Form/Form";
-
-import { fileToBase64 } from "./utils/Image";
 import { useSelector, useDispatch } from "react-redux";
-
 import { changeImage, changeName } from "./state/naming/namingSlice";
 import {
   changeSubtypes,
   changeSupertype,
-  changeType,
+  changeTypes,
 } from "./state/typing/typingSlice";
 
 import {
@@ -40,12 +36,9 @@ import {
 } from "@heroicons/react/20/solid";
 import Button from "./components/atoms/Button/Button";
 import { Buffer } from "buffer";
-import Sets from "./assets/json/Sets.json";
 import CardTyping from "./assets/json/CardTypes2.json";
 import { getSetsOptionList } from "./utils/getSetOptionList";
-import React from "react";
 import { RootState } from "./state/store";
-import { title } from "process";
 import { Typing } from "./components/organisms/Form/Typing";
 import { ExpansionAndRarity } from "./components/organisms/Form/ExpansionAndRarity";
 import { AbilitiesAndFlavor } from "./components/organisms/Form/AbilitiesAndFlavor";
@@ -75,7 +68,7 @@ const card: CardData = {
   rarity: "Mythic",
   colorIdentity: [],
   superType: "Legendary",
-  type: "Artifact",
+  types: ["Artifact"],
   subtypes: "Zombie Berzerker",
   creatureData: {
     power: 5,
@@ -122,9 +115,9 @@ const TypingUI = () => {
     <Typing
       onChangeSubtypes={(subtypes) => dispatch(changeSubtypes(subtypes))}
       onChangeSupertype={(supertype) => dispatch(changeSupertype(supertype))}
-      onChangeType={(type) => dispatch(changeType(type))}
+      onChangeTypes={(types) => dispatch(changeTypes(types))}
       cardSupertype={typing.superType}
-      cardType={typing.type}
+      cardTypes={typing.types}
       cardSubtypes={typing.subtypes}
       cardSupertypeOptions={CardTyping.cardSuperTypes as CardSuperType[]}
       cardTypeOptions={CardTyping.cardTypes as CardType[]}
@@ -290,7 +283,7 @@ function App() {
                   ...card,
                   title: naming.name,
                   imageSource: naming.image.data,
-                  type: typing.type,
+                  types: typing.types,
                   superType: typing.superType,
                   subtypes: typing.subtypes,
                   text: abilitiesAndFlavor.cardText,

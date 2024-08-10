@@ -88,7 +88,7 @@ type CardType =
   | "Tribal"
   | "Vanguard";
 
-type CardSuperType = "Basic" | "Legendary" | "Ongoing" | "Snow" | "World";
+type CardSuperType = "None" | "Basic" | "Legendary" | "Ongoing" | "Snow" | "World";
 
 type ArtifactSubTypes =
   | "Attraction"
@@ -151,7 +151,7 @@ type CardData = {
   text: string;
   flavor?: string;
   superType: CardSuperType;
-  type: CardType;
+  types: CardType[];
   subtypes: string;
   collection: string;
   rarity: CardRarity;

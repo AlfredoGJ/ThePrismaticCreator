@@ -61,6 +61,7 @@ export const Select = ({
                   key={option.id}
                   className=" cursor-default select-none py-1 px-1"
                   value={option}
+                  
                 >
                   {({ selected, active }) => (
                     <>

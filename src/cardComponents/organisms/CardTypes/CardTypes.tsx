@@ -8,7 +8,7 @@ import { ColorIdentityEnum } from "../../../ts/types";
 
 interface CardTypesProps {
   superType: CardSuperType;
-  type: CardType;
+  types: CardType[];
   subTypes: string;
   collection: string;
   rarity: string;
@@ -19,7 +19,7 @@ interface CardTypesProps {
 
 const CardTypes = ({
   superType,
-  type,
+  types,
   subTypes,
   collection,
   rarity,
@@ -30,8 +30,8 @@ const CardTypes = ({
   return (
     <CardHeader color={colorIdentity.toLowerCase()} finish="emboss" hasColorBorder top={0.74}>
       <CardText variant="Title">
-        {superType && `${superType} `}
-        {type}
+        {superType!== "None" && `${superType} `}
+        {types.join(' ')}
         {subTypes.length > 0 && " — "}
         {subTypes.split(" ").map((subtype) => ` ${subtype} `)}
       </CardText>
