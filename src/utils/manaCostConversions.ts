@@ -1,4 +1,10 @@
-import { ColorIdentityEnum, ManaCostSymbols, MonoColorIdentityEnum, NoColorIdentityEnum, TwoColorIdentityEnum } from "../ts/types";
+import {
+  ColorIdentityEnum,
+  ManaCostSymbols,
+  MonoColorIdentityEnum,
+  NoColorIdentityEnum,
+  TwoColorIdentityEnum,
+} from "../ts/types";
 import { ICostQuantity } from "../ts/types";
 import Set from "core-js/stable/set";
 
@@ -73,7 +79,26 @@ function numberFromCostSymbols(costSymbols: ManaCostSymbols[]) {
   return costQuantity;
 }
 
-function getColorIdentityFromManaCost(manaCost: ManaCostSymbols[]):ColorIdentityEnum {
+function getColorIdentityFromLandSubtype(
+  landType: string[]
+): ColorIdentityEnum {
+  const landTypeToManaSymbol = landType
+    .map((land) => {
+      if (land === "Forest") return "G";
+      if (land === "Swamp") return "B";
+      if (land === "Island") return "U";
+      if (land === "Plains") return "W";
+      if (land === "Mountain") return "R";
+      return undefined
+    })
+    .filter((s) => s !== undefined);
+
+  return getColorIdentityFromManaCost(landTypeToManaSymbol);
+}
+
+function getColorIdentityFromManaCost(
+  manaCost: ManaCostSymbols[]
+): ColorIdentityEnum {
   const costSet = new Set(manaCost);
   const colorSet = new Set(["W", "U", "B", "R", "G"]);
 
@@ -124,22 +149,37 @@ function getColorIdentityFromManaCost(manaCost: ManaCostSymbols[]):ColorIdentity
     costSet.intersection(new Set(["G", "B"])).size === 2 &&
     costSet.intersection(new Set(["U", "W", "R"])).size === 0
   )
-    return TwoColorIdentityEnum.Golgari;;
+    return TwoColorIdentityEnum.Golgari;
   if (
     costSet.intersection(new Set(["U", "R"])).size === 2 &&
     costSet.intersection(new Set(["W", "G", "B"])).size === 0
   )
     return TwoColorIdentityEnum.Izzet;
 
-  if (costSet.has("R") && costSet.intersection(new Set(["W", "U", "B", "G"])).size === 0)
+  if (
+    costSet.has("R") &&
+    costSet.intersection(new Set(["W", "U", "B", "G"])).size === 0
+  )
     return MonoColorIdentityEnum.Red;
-  if (costSet.has("G") && costSet.intersection(new Set(["W", "U", "B", "R"])).size === 0)
+  if (
+    costSet.has("G") &&
+    costSet.intersection(new Set(["W", "U", "B", "R"])).size === 0
+  )
     return MonoColorIdentityEnum.Green;
-  if (costSet.has("B") && costSet.intersection(new Set(["W", "U", "G", "R"])).size === 0)
+  if (
+    costSet.has("B") &&
+    costSet.intersection(new Set(["W", "U", "G", "R"])).size === 0
+  )
     return MonoColorIdentityEnum.Black;
-  if (costSet.has("U") && costSet.intersection(new Set(["W", "B", "G", "R"])).size === 0)
+  if (
+    costSet.has("U") &&
+    costSet.intersection(new Set(["W", "B", "G", "R"])).size === 0
+  )
     return MonoColorIdentityEnum.Blue;
-  if (costSet.has("W") && costSet.intersection(new Set(["U", "B", "G", "R"])).size === 0)
+  if (
+    costSet.has("W") &&
+    costSet.intersection(new Set(["U", "B", "G", "R"])).size === 0
+  )
     return MonoColorIdentityEnum.White;
 
   return TwoColorIdentityEnum.Multicolor;
@@ -149,4 +189,5 @@ export {
   costSymbolsFromNumber,
   numberFromCostSymbols,
   getColorIdentityFromManaCost,
+  getColorIdentityFromLandSubtype,
 };

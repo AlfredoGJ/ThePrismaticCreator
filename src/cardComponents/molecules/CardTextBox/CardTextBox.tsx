@@ -16,23 +16,29 @@ export const CardTextBox = ({ children, flavor, color }: CardTextBoxProps) => {
   const { textContainerPaddingPercent, thinBorderPercent } = constants.card;
 
   return (
-    <AbsoluteContainer bottom={0.08} height={0.391} left={0.03} right={0.03}>
-      <ContentBorder color={color}>
-        <div
-          className={`card-textbox-content card-textbox-${color}`}
-          style={{ padding: cardSize.width * textContainerPaddingPercent }}
-        >
-          <CardText variant="Content">{children}</CardText>
-          <hr
-            className="card-text-separator"
-            style={{
-              marginBlock: cardSize.width * textContainerPaddingPercent,
-              height: cardSize.width * thinBorderPercent,
-            }}
-          ></hr>
-          <CardText variant="Flavor">{flavor}</CardText>
-        </div>
-      </ContentBorder>
-    </AbsoluteContainer>
+    <ContentBorder hideTop color={color}>
+      <div
+        className={`card-textbox-content card-textbox-${color}`}
+        style={{
+          padding: cardSize.width * textContainerPaddingPercent,
+          border: `${cardSize.width * thinBorderPercent}px solid black`,
+        }}
+      >
+        <CardText variant="Content">{children}</CardText>
+        {flavor && (
+          <>
+            {" "}
+            <hr
+              className="card-text-separator"
+              style={{
+                marginBlock: cardSize.width * textContainerPaddingPercent,
+                height: cardSize.width * thinBorderPercent,
+              }}
+            ></hr>
+            <CardText variant="Flavor">{flavor}</CardText>{" "}
+          </>
+        )}
+      </div>
+    </ContentBorder>
   );
 };

@@ -6,6 +6,7 @@
     --white-border: rgb(231, 233, 217);
     --black-border: rgb(64, 64, 64);
     --colorless-border: rgb(230, 230, 235);
+    --brown-border: rgb(100,80,20);
 
 }
 
@@ -30,6 +31,10 @@
 .content-border-black {
 
     background: rgb(64, 64, 64);
+}
+
+.content-border-brown{
+    background:var(--border-brown);
 }
 
 .content-border-colorless {

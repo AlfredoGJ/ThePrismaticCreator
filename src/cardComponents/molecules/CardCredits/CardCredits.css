@@ -1,6 +1,7 @@
 .credits-container {
   display: flex;
   flex-direction: column;
+ 
 }
 
 .credits-artist {

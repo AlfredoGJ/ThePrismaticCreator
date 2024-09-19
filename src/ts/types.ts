@@ -24,6 +24,13 @@ interface ICostQuantity {
   colorless: number;
 }
 
+export type BasicLandType =
+  | "Swamp"
+  | "Forest"
+  | "Mountain"
+  | "Plains"
+  | "Island";
+
 export enum NoColorIdentityEnum {
   Colorless = "Colorless",
 }
@@ -88,7 +95,13 @@ type CardType =
   | "Tribal"
   | "Vanguard";
 
-type CardSuperType = "None" | "Basic" | "Legendary" | "Ongoing" | "Snow" | "World";
+type CardSuperType =
+  | "None"
+  | "Basic"
+  | "Legendary"
+  | "Ongoing"
+  | "Snow"
+  | "World";
 
 type ArtifactSubTypes =
   | "Attraction"
@@ -175,4 +188,5 @@ export type {
   CreatureData,
   ManaCostSymbols,
   ICostQuantity,
+  Colors,
 };

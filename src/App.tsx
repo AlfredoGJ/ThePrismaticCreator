@@ -33,6 +33,11 @@ import {
   StarIcon,
   HandRaisedIcon,
   RectangleStackIcon,
+  ArrowDownTrayIcon,
+  CubeIcon,
+  FireIcon,
+  PaintBrushIcon,
+  FolderIcon,
 } from "@heroicons/react/20/solid";
 import Button from "./components/atoms/Button/Button";
 import { Buffer } from "buffer";
@@ -54,6 +59,10 @@ import {
   changeCardDisclaimer,
 } from "./state/artistAndDisclaimer/artistAndDisclaimer";
 import ManaCost from "./components/organisms/Form/ManaCost";
+import { TabItem } from "./components/atoms/Tab/TabItem";
+import ButtonGroup from "./components/molecules/ButtonGroup/ButtonGroup";
+import { Dialog } from "@headlessui/react";
+import { ModernTokenTemplate } from "./cardComponents/templates/ModernToken/ModernToken";
 
 const card: CardData = {
   imageSource:
@@ -266,19 +275,60 @@ function App() {
     (state: RootState) => state.artistAndDisclaimer
   );
   const manaCost = useSelector((state: RootState) => state.manaCost);
-  const expansionAndRarity = useSelector((state:RootState) => state.expansionAndRarity)
+  const expansionAndRarity = useSelector(
+    (state: RootState) => state.expansionAndRarity
+  );
 
   return (
     <div id="App" className="">
       <div className=" flex flex-col">
-        <div className="flex flex-row justify-between p-3 mb-3">
-          <Button size="sm">|||</Button>
-          <Button size="sm">Download</Button>
+        <div className="mb-5 flex justify-between bg-stone-700 gap-1">
+          <div className="flex justify-start gap-1 w-1/2">
+            <Button
+              size="sm"
+              className="basis-1/4"
+              shape="square"
+              key="Presets"
+              contentCenter
+            >
+              <CubeIcon className="w-5" />
+            </Button>
+            <Button
+              size="sm"
+              className=" basis-1/4"
+              shape="square"
+              key="Styles"
+              contentCenter
+            >
+              <PaintBrushIcon className="w-5"/>
+            </Button>
+          </div>
+          <div className="flex justify-end gap-1 w-1/2">
+            <Button
+              color="secondary"
+              size="sm"
+              className="basis-1/4"
+              shape="square"
+              key="Save"
+              contentCenter
+            >
+            <FolderIcon className="w-5"/>
+            </Button>
+            <Button
+              size="sm"
+              className="basis-1/4"
+              shape="square"
+              key="Download"
+              contentCenter
+            >
+              <ArrowDownTrayIcon className="w-5" />
+            </Button>
+          </div>
         </div>
         <div className="flex flex-row justify-center">
           <div id="Card" className="w-8/12">
             <CardSizeContextProvider value={initialCardSizeContext}>
-              <ClassicCardTemplate
+              <ModernTokenTemplate
                 {...{
                   ...card,
                   title: naming.name,
@@ -291,7 +341,7 @@ function App() {
                   disclaimer: artistAndDisclaimer.cardDisclaimer,
                   artist: artistAndDisclaimer.cardArtist,
                   manaCost: manaCost.manaCost,
-                  collection:expansionAndRarity.expansion.id as string,
+                  collection: expansionAndRarity.expansion.id as string,
                   rarity: expansionAndRarity.rarity.name as CardRarity,
                   creatureData: {
                     power: abilitiesAndFlavor.cardPower,

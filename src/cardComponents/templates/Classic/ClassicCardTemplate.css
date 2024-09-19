@@ -1,0 +1,17 @@
+.card-content {
+  display: grid;
+  height: 100%;
+  grid-template-rows: 8% 48% 8% 31% 3%;
+}
+
+.card-art-container {
+  padding-inline: 1.5%;
+}
+
+.card-textbox-container {
+  padding-inline: 1.5%;
+}
+.card-credits-container {
+  padding-inline: 1.5%;
+  padding-top: 0.8%;
+}

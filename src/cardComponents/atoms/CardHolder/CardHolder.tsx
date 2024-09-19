@@ -3,9 +3,11 @@ import { CardSizeContext } from "../../../utils/cardSizeContext";
 import "./CardHolder.css";
 import { useContext, useEffect, useRef } from "react";
 
-interface CardHolderPorps extends React.HTMLAttributes<HTMLDivElement> {}
+interface CardHolderPorps extends React.HTMLAttributes<HTMLDivElement> {
+  type?: "old" | "modern";
+}
 
-export const CardHolder = ({ children }: CardHolderPorps) => {
+export const CardHolder = ({ children, type = "old" }: CardHolderPorps) => {
   const cardFrameRef = useRef(null);
 
   const { setCardSize, cardSize } = useContext(CardSizeContext);

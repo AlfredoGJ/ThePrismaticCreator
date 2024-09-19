@@ -20,10 +20,10 @@ interface CardHeaderPorps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const CardHeader = ({
   children,
-  top = 0.02,
-  left = 0.015,
-  right = 0.015,
-  bottom = 0.03,
+  // top = 0.02,
+  // left = 0.015,
+  // right = 0.015,
+  // bottom = 0.03,
   height = 0.109,
   hasColorBorder,
   textAlign = "space-between",
@@ -40,13 +40,13 @@ export const CardHeader = ({
   const Border = hasColorBorder ? ContentBorder : React.Fragment;
 
   return (
-    <AbsoluteContainer
-      top={top}
-      left={left}
-      right={right}
-      bottom={bottom}
-      height={height}
-    >
+    // <AbsoluteContainer
+    //   top={top}
+    //   left={left}
+    //   right={right}
+    //   bottom={bottom}
+    //   height={height}
+    // >
       <Border xBorderRadius={0.5} yBorderRadius={0.15} color={color}>
         <ContentFinish
           color={color}
@@ -65,6 +65,6 @@ export const CardHeader = ({
           </div>
         </ContentFinish>
       </Border>
-    </AbsoluteContainer>
+    // </AbsoluteContainer>
   );
 };

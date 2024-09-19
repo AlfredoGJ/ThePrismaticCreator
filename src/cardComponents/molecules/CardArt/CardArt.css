@@ -4,13 +4,8 @@
   object-fit: cover;
 }
 
-.card-art-container {
-  position: absolute;
-  left: 4.5%;
-  right: 4.5%;
-  bottom: 38%;
-  top: 11%;
-}
+
+
 .card-art-border {
   width: 100%;
   height: 100%;
